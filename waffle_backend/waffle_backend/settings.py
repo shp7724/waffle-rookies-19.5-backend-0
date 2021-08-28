@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -18,6 +19,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+
+try:
+    with open('secrets.json', 'r') as f:
+        secrets = json.loads(f.read())
+except FileNotFoundError:
+    print('secrets.json 파일이 필요합니다.')
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0^k@b1ln%g7l_*6xr*&5&vhgp7r$i&n-db#_!(8*a$n2y1hf4='
@@ -79,9 +87,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': 3306,
-        'NAME': 'waffle_backend',  # database name
-        'USER': 'waffle-backend',
-        'PASSWORD': 'seminar',
+        'NAME': secrets['DB_NAME'],  # database name
+        'USER': secrets['DB_USER'],
+        'PASSWORD': secrets['DB_PASSWORD'],
     }
 }
 
