@@ -1,4 +1,5 @@
 # waffle-rookies-19.5-backend-0
+![Generic badge](https://img.shields.io/badge/이름-박신홍-lightgrey.svg)
 ![Generic badge](https://img.shields.io/badge/진행-100%25-success.svg)
 ![Generic badge](https://img.shields.io/badge/분류-청강생-blue.svg)
 
